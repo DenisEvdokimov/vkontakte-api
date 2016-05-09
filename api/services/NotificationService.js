@@ -42,15 +42,10 @@ module.exports = {
 			}			
 			var resultIds = recipients.rows[0].ids;
 			var log = '';
-			var logStream = fs.createWriteStream('./logs/notification.log', {flags : 'a'});
-			try {
-				for(var i = 0; i < resultIds.length; i++){
-					log = 'Send messages to users: [' + resultIds + '] \n';
-					logStream.write(log);
-				}	
-			}finally {
-				logStream.close();
-			}
+			var logStream = fs.createWriteStream(sails.config.paths.log, {flags : 'a'});
+						
+			log = 'Send messages to users: [' + resultIds + '] \n';
+			logStream.write(log);						
 			return callback(null, resultIds);
 		});				
 	}	

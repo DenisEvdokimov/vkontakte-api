@@ -11,6 +11,7 @@ module.exports = {
 		try {
 			var ids = req.body.ids;
 			var text = req.body.text;
+			
 			if(ids == null || text == null){
 				NotificationService.throwServerError();
 			}
